@@ -4,9 +4,21 @@
 # --- import -------------------------------------------------------------------------------------
 
 
+import sys
 import ast
 
+import numpy as np
+
 from ._parse_array import array2string, string2array
+
+
+# --- define -------------------------------------------------------------------------------------
+
+
+if sys.version[0] == '2':
+    string_type = basestring  # noqa: F821
+else:
+    string_type = str  # newer versions of python don't have unicode type
 
 
 # --- functions ----------------------------------------------------------------------------------

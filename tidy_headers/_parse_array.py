@@ -4,7 +4,11 @@
 # --- import -------------------------------------------------------------------------------------
 
 
+import re
+
 import numpy as np
+
+from ._utilities import flatten_list
 
 
 # --- parse --------------------------------------------------------------------------------------
@@ -12,9 +16,9 @@ import numpy as np
 
 def array2string(array, sep='\t'):
     """Generate a string from an array with useful formatting.
-    
+
     Great for writing arrays into single lines in files.
-    
+
     See Also
     --------
     string2array

@@ -5,7 +5,10 @@
 
 
 import re
+import copy
 import collections
+
+import numpy as np
 
 from ._parse_item import item2string, string2item
 
