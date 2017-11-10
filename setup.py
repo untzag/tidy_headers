@@ -16,7 +16,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 
 extra_files = []
 extra_files.append(os.path.join(here, 'LICENSE'))
-extra_files.append(os.path.join(here, 'README.rst'))
+extra_files.append(os.path.join(here, 'README.md'))
 extra_files.append(os.path.join(here, 'requirements.txt'))
 extra_files.append(os.path.join(here, 'VERSION'))
 
@@ -39,8 +39,6 @@ setup(
     name='tidy_headers',
     packages=find_packages(),
     package_data={'': extra_files},
-    setup_requires=['pytest-runner'],
-    tests_require=['pytest', 'pytest-cov'],
     install_requires=required,
     version=version,
     description='Easy headers, inspired by the tidy data formats.',
