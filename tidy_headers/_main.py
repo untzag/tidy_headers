@@ -23,18 +23,17 @@ __all__ = ['read', 'write']
 
 
 def read(filepath):
-    """Read 'WrightTools formatted' headers from given path.
+    """Read headers from given filepath.
+
     Parameters
     ----------
     filepath : str
         Path of file.
+
     Returns
     -------
-    OrderedDict
+    collections.OrderedDict
         Dictionary containing header information.
-    See Also
-    --------
-    kit.write_headers
     """
     headers = collections.OrderedDict()
     for line in open(filepath):
@@ -48,21 +47,14 @@ def read(filepath):
 
 
 def write(filepath, dictionary):
-    """Write 'WrightTooTools formatted' headers to given file.
-    Headers written can be read again using read_headers.
+    """Write headers to given filepath.
+
     Parameters
     ----------
     filepath : str
-        Path of file. File must not exist.
+        Path of file. File must not yet exist.
     dictionary : dict or OrderedDict
         Dictionary of header items.
-    Returns
-    -------
-    str
-        Filepath of file.
-    See Also
-    --------
-    kit.read_headers
     """
     dictionary = copy.deepcopy(dictionary)
     # write header
@@ -77,5 +69,3 @@ def write(filepath, dictionary):
         lines.append(joiner.join([key + ':', value]))
     header_str = '\n'.join(lines)
     np.savetxt(filepath, [], header=header_str)
-    # return
-    return filepath

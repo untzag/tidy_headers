@@ -26,18 +26,17 @@ else:
 
 def item2string(item, sep='\t'):
     r"""Generate string from item.
+
     Parameters
     ----------
     item : object
         Item.
     sep : string (optional)
         Separator. Default is '\t'.
+
     Returns
     -------
     string
-    See Also
-    --------
-    string2item
     """
     out = ''
     if isinstance(item, string_type):
@@ -61,18 +60,17 @@ def item2string(item, sep='\t'):
 
 def string2item(string, sep='\t'):
     r"""Turn a string into a python object.
+
     Parameters
     ----------
     string : string
         String.
     sep : string (optional)
         Seperator. Default is '\t'.
+
     Returns
     -------
     object
-    See Also
-    --------
-    item2string
     """
     if string[0] == '\'' and string[-1] == '\'':
         out = string[1:-1]
