@@ -1,9 +1,20 @@
 """Parse array."""
 
 
+# --- import -------------------------------------------------------------------------------------
+
+
+import numpy as np
+
+
+# --- parse --------------------------------------------------------------------------------------
+
+
 def array2string(array, sep='\t'):
     """Generate a string from an array with useful formatting.
+    
     Great for writing arrays into single lines in files.
+    
     See Also
     --------
     string2array
@@ -17,6 +28,7 @@ def array2string(array, sep='\t'):
 
 def string2array(string, sep='\t'):
     """Generate an array from a string created using array2string.
+
     See Also
     --------
     array2string
