@@ -5,3 +5,5 @@ build/
 dist/
 eggs/
 .eggs/
+.cache/
+.coverage
