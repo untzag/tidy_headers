@@ -4,7 +4,7 @@
 
 ## example
 
-For some `filepath` and some numpy array `arr`, 
+For some `filepath`, 
 
 ```python
 import collections
@@ -14,16 +14,12 @@ meta['date'] = '2017-11-10'
 meta['location'] = 'Madison, Wisconsin, USA'
 meta['name'] = ['batch', 'apples', 'pineapple', 'oregano', 'tomatoes']
 tidy_headers.write(filepath, meta)
-np.savetxt(filepath, arr, delimiter='\t')
 ```
 
-To get the information back, simply `read`:
+To get the dictionary back, simply `read`:
 
 ```python
-import numpy as np
-import tidy_headers
 meta = tidy_headers.read(filepath)
-arr = np.genfromtxt(filepath)
 ```
 
 :tada:
