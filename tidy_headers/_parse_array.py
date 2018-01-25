@@ -25,7 +25,7 @@ def array2string(array, sep='\t'):
     """
     np.set_printoptions(threshold=array.size)
     string = np.array2string(array, separator=sep)
-    string = string.replace('\n', sep)
+    string = string.replace(sep.strip() + '\n', sep)
     string = re.sub(r'({})(?=\1)'.format(sep), '', string)
     return string
 
@@ -38,7 +38,7 @@ def string2array(string, sep='\t'):
     array2string
     """
     # discover size
-    size = string.count('\t') + 1
+    size = string.count(sep) + 1
     # discover dimensionality
     dimensionality = 0
     while string[dimensionality] == '[':
@@ -59,7 +59,7 @@ def string2array(string, sep='\t'):
     # annoyingly series of negative values get past previous filters
     lis = flatten_list([i.split('-') for i in lis])
     for i, item in enumerate(lis):
-        bad_chars = ['[', ']', '\t', '\n']
+        bad_chars = ['[', ']', '\t', '\n'] + list(sep)
         for bad_char in bad_chars:
             item = item.replace(bad_char, '')
         lis[i] = item

@@ -77,7 +77,7 @@ def string2item(string, sep='\t'):
     else:
         split = string.split(sep)
         if split[0][0:2] == '[[':  # case of multidimensional arrays
-            out = string2array(sep.join(split))
+            out = string2array(sep.join(split), sep=sep)
         else:
             split = [i.strip() for i in split]  # remove dumb things
             split = [i if i is not '' else 'None' for i in split]  # handle empties
