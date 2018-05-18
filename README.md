@@ -24,7 +24,9 @@ meta = tidy_headers.read(filepath)
 
 :tada:
 
-See the examples directory for more.
+See the examples directory for more:
+* [minimal.txt](../blob/master/examples/minimal.txt)
+* [named.txt](../blob/master/examples/named.txt)
 
 ## installation
 
