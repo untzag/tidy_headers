@@ -1,3 +1,4 @@
+# python
 *__pycache__*
 *.egg*
 *.pyc*
@@ -7,3 +8,7 @@ eggs/
 .eggs/
 .cache/
 .coverage
+.pytest_cache/
+
+# emacs
+*.#*
