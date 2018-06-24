@@ -16,7 +16,7 @@ from ._parse_item import item2string, string2item
 # --- define -------------------------------------------------------------------------------------
 
 
-__all__ = ['read', 'write']
+__all__ = ["read", "write"]
 
 
 # --- helpers ------------------------------------------------------------------------------------
@@ -37,8 +37,8 @@ def read(filepath):
     """
     headers = collections.OrderedDict()
     for line in open(filepath):
-        if line[0] == '#':
-            split = re.split('\: |\:\t', line)
+        if line[0] == "#":
+            split = re.split("\: |\:\t", line)
             key = split[0][2:]
             headers[key] = string2item(split[1])
         else:
@@ -62,10 +62,10 @@ def write(filepath, dictionary):
         dictionary[key] = item2string(value)
     lines = []
     for key, value in dictionary.items():
-        if '\t' in value:
-            joiner = ''
+        if "\t" in value:
+            joiner = ""
         else:
-            joiner = '\t'
-        lines.append(joiner.join([key + ':', value]))
-    header_str = '\n'.join(lines)
+            joiner = "\t"
+        lines.append(joiner.join([key + ":", value]))
+    header_str = "\n".join(lines)
     np.savetxt(filepath, [], header=header_str)
