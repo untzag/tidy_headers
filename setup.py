@@ -17,7 +17,7 @@ setup(
     setup_requires=["pytest-runner"],
     install_requires=["numpy"],
     tests_require=["pytest", "pytest-cov"],
-    extras_reqire={"dev": ["black", "pre-commit", "pydocstyle"]},
+    extras_require={"dev": ["black", "pre-commit", "pydocstyle"]},
     version=version,
     description="Easy headers, inspired by the tidy data formats.",
     author="Blaise Thompson",
