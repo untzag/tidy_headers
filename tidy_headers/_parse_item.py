@@ -15,7 +15,7 @@ from ._parse_array import array2string, string2array
 # --- define -------------------------------------------------------------------------------------
 
 
-if sys.version[0] == '2':
+if sys.version[0] == "2":
     string_type = basestring  # noqa: F821
 else:
     string_type = str  # newer versions of python don't have unicode type
@@ -24,7 +24,7 @@ else:
 # --- functions ----------------------------------------------------------------------------------
 
 
-def item2string(item, sep='\t'):
+def item2string(item, sep="\t"):
     r"""Generate string from item.
 
     Parameters
@@ -38,27 +38,27 @@ def item2string(item, sep='\t'):
     -------
     string
     """
-    out = ''
+    out = ""
     if isinstance(item, string_type):
-        out += '\'' + item + '\''
+        out += "'" + item + "'"
     elif isinstance(item, list):
         for i in range(len(item)):
             if isinstance(item[i], string_type):
-                item[i] = '\'' + item[i] + '\''
+                item[i] = "'" + item[i] + "'"
             else:
                 item[i] = str(item[i])
-        out += ' [' + sep.join(item) + ']'
+        out += " [" + sep.join(item) + "]"
     elif type(item).__module__ == np.__name__:  # anything from numpy
-        if hasattr(item, 'shape'):
-            out = ' ' + array2string(item, sep=sep)
+        if hasattr(item, "shape"):
+            out = " " + array2string(item, sep=sep)
         else:
-            out += ' [' + sep.join([str(i) for i in item]) + ']'
+            out += " [" + sep.join([str(i) for i in item]) + "]"
     else:
         out = str(item)
     return out
 
 
-def string2item(string, sep='\t'):
+def string2item(string, sep="\t"):
     r"""Turn a string into a python object.
 
     Parameters
@@ -72,29 +72,29 @@ def string2item(string, sep='\t'):
     -------
     object
     """
-    if string[0] == '\'' and string[-1] == '\'':
+    if string[0] == "'" and string[-1] == "'":
         out = string[1:-1]
     else:
         split = string.split(sep)
-        if split[0][0:2] == '[[':  # case of multidimensional arrays
+        if split[0][0:2] == "[[":  # case of multidimensional arrays
             out = string2array(sep.join(split), sep=sep)
         else:
             split = [i.strip() for i in split]  # remove dumb things
-            split = [i if i is not '' else 'None' for i in split]  # handle empties
+            split = [i if i is not "" else "None" for i in split]  # handle empties
             # handle lists
             is_list = False
-            list_chars = ['[', ']']
+            list_chars = ["[", "]"]
             for item_index, item_string in enumerate(split):
-                if item_string == '[]':
+                if item_string == "[]":
                     continue
-                if item_string[0] == '\'' and item_string[-1] == '\'':  # this is a string
+                if item_string[0] == "'" and item_string[-1] == "'":  # this is a string
                     continue
                 for char in item_string:
                     if char in list_chars:
                         is_list = True
                 for char in list_chars:
                     item_string = split[item_index]
-                    split[item_index] = item_string.replace(char, '')
+                    split[item_index] = item_string.replace(char, "")
             # eval contents
             split = [i.strip() for i in split]  # remove dumb things
             split = [ast.literal_eval(i) for i in split]
