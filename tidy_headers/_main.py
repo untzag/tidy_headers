@@ -36,7 +36,9 @@ def read(filepath):
         Dictionary containing header information.
     """
     headers = collections.OrderedDict()
-    for line in open(filepath):
+    ds = np.DataSource(None)
+    for line in ds.open(filepath, "rb"):
+        line = line.decode()
         if line[0] == "#":
             split = re.split("\: |\:\t", line)
             key = split[0][2:]
