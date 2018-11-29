@@ -5,6 +5,7 @@
 
 
 import re
+import os
 import copy
 import collections
 
@@ -22,13 +23,16 @@ __all__ = ["read", "write"]
 # --- helpers ------------------------------------------------------------------------------------
 
 
-def read(filepath):
+def read(filepath, *, encoding="utf-8"):
     """Read headers from given filepath.
 
     Parameters
     ----------
-    filepath : str
-        Path of file.
+    filepath : path-like or iterable of strings
+        Path to file or iterable of stings
+    encoding : str
+        Encoding to use when opening the file.
+        No effect if iterable of strings given.
 
     Returns
     -------
@@ -37,8 +41,19 @@ def read(filepath):
     """
     headers = collections.OrderedDict()
     ds = np.DataSource(None)
-    for line in ds.open(filepath, "rb"):
-        line = line.decode()
+    # The following code is adapted from np.genfromtxt source
+    try:
+        if isinstance(filepath, os.PathLike):
+            filepath = os.fspath(filepath)
+        if isinstance(filepath, str):
+            fhd = iter(ds.open(filepath, 'rt', encoding=encoding))
+        else:
+            fhd = iter(filepath)
+    except TypeError:
+        raise TypeError(
+            "filepath must be a path-like, list of strings, "
+"or generator. Got %s instead." % type(filepath))
+    for line in fhd:
         if line[0] == "#":
             split = re.split("\: |\:\t", line)
             key = split[0][2:]
