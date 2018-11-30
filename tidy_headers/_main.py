@@ -38,7 +38,7 @@ def read(filepath):
     headers = collections.OrderedDict()
     for line in open(filepath):
         if line[0] == "#":
-            split = re.split("\: |\:\t", line)
+            split = re.split("\: |\:\t", line, maxsplit=1)
             key = split[0][2:]
             headers[key] = string2item(split[1])
         else:
