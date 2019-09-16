@@ -80,7 +80,7 @@ def string2item(string, sep="\t"):
             out = string2array(sep.join(split), sep=sep)
         else:
             split = [i.strip() for i in split]  # remove dumb things
-            split = [i if i is not "" else "None" for i in split]  # handle empties
+            split = [i if i != "" else "None" for i in split]  # handle empties
             # handle lists
             is_list = False
             list_chars = ["[", "]"]
