@@ -56,7 +56,7 @@ def read(filepath, *, encoding="utf-8"):
     for line in fhd:
         if line[0] == "#":
             split = re.split(": |:\t", line, maxsplit=1)
-            key = split[0][2:]O
+            key = split[0][2:]
             headers[key] = string2item(split[1])
         else:
             break  # all header lines are at the beginning
