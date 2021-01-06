@@ -67,3 +67,13 @@ def test_str():
     tidy_headers.write(f.name, d)
     assert_dict_equal(d, tidy_headers.read(f.name))
     f.close()
+    
+def test_array_nans():
+    f = tempfile.NamedTemporaryFile()
+    d = {}
+    d["nan"] = np.array([np.nan])
+    d["inf"] = np.array([np.inf])
+    d["-inf"] = np.array([-np.inf])
+    tidy_headers.write(f.name, d)
+    assert_dict_equal(d, tidy_headers.read(f.name))
+    f.close()    
