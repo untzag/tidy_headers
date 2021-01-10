@@ -25,7 +25,7 @@ def assert_dict_equal(a, b):
 
 def test_float():
     f = tempfile.NamedTemporaryFile()
-    d = {"zero": 0., "four": 4., "large": 124., "negative": -12., "fraction": 0.5}
+    d = {"zero": 0.0, "four": 4.0, "large": 124.0, "negative": -12.0, "fraction": 0.5}
     tidy_headers.write(f.name, d)
     assert_dict_equal(d, tidy_headers.read(f.name))
     f.close()
@@ -64,6 +64,17 @@ def test_array():
 def test_str():
     f = tempfile.NamedTemporaryFile()
     d = {"blaise": "thompson", "red": "tomato", "love": "hate", "madison": "wisconsin"}
+    tidy_headers.write(f.name, d)
+    assert_dict_equal(d, tidy_headers.read(f.name))
+    f.close()
+
+
+def test_array_nans():
+    f = tempfile.NamedTemporaryFile()
+    d = {}
+    d["nan"] = np.array([np.nan])
+    d["inf"] = np.array([np.inf])
+    d["-inf"] = np.array([-np.inf])
     tidy_headers.write(f.name, d)
     assert_dict_equal(d, tidy_headers.read(f.name))
     f.close()

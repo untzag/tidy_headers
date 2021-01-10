@@ -9,6 +9,7 @@ import re
 
 import numpy as np
 
+from ._eval import literal_eval
 
 # --- parse --------------------------------------------------------------------------------------
 
@@ -38,4 +39,4 @@ def string2array(string, sep="\t"):
     """
     string = string.replace(sep, ",")
     string = re.sub(",,+", ",", string)
-    return np.array(ast.literal_eval(string))
+    return np.array(literal_eval(string))

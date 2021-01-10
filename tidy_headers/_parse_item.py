@@ -11,6 +11,8 @@ import numpy as np
 
 from ._parse_array import array2string, string2array
 
+from ._eval import literal_eval
+
 
 # --- define -------------------------------------------------------------------------------------
 
@@ -97,7 +99,7 @@ def string2item(string, sep="\t"):
                     split[item_index] = item_string.replace(char, "")
             # eval contents
             split = [i.strip() for i in split]  # remove dumb things
-            split = [ast.literal_eval(i) for i in split]
+            split = [literal_eval(i) for i in split]
             if len(split) == 1 and not is_list:
                 split = split[0]
             out = split

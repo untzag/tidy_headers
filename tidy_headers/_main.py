@@ -46,13 +46,14 @@ def read(filepath, *, encoding="utf-8"):
         if isinstance(filepath, os.PathLike):
             filepath = os.fspath(filepath)
         if isinstance(filepath, str):
-            fhd = iter(ds.open(filepath, 'rt', encoding=encoding))
+            fhd = iter(ds.open(filepath, "rt", encoding=encoding))
         else:
             fhd = iter(filepath)
     except TypeError:
         raise TypeError(
             "filepath must be a path-like, list of strings, "
-"or generator. Got %s instead." % type(filepath))
+            "or generator. Got %s instead." % type(filepath)
+        )
     for line in fhd:
         if line[0] == "#":
             split = re.split(": |:\t", line, maxsplit=1)
