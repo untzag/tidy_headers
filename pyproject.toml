@@ -1,0 +1,31 @@
+[build-system]
+requires = ["flit_core >=2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.metadata]
+module = "tidy_headers"
+author = "Blaise Thompson"
+author-email = "blaise@untzag.com"
+home-page = "https://github.com/untzag/tidy_headers"
+description-file = "README.md"
+description = "Easy headers, inspired by the tidy data formats."
+requires-python = ">3.3"
+requires = ["numpy"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Topic :: Scientific/Engineering",
+]
+
+
+[tool.flit.metadata.requires-extra]
+dev = ["black",
+       "pre-commit",
+       "pytest",
+]
+
