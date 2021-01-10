@@ -1,4 +1,4 @@
-"""Tidy headers."""
+"""Easy headers, inspired by the tidy data specification."""
 # flake8: noqa
 
 
