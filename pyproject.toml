@@ -8,7 +8,7 @@ author = "Blaise Thompson"
 author-email = "blaise@untzag.com"
 home-page = "https://github.com/untzag/tidy_headers"
 description-file = "README.md"
-requires-python = ">3.5"
+requires-python = ">3.6"
 requires = ["numpy"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
