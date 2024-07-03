@@ -12,6 +12,7 @@ import collections
 import numpy as np
 
 from ._parse_item import item2string, string2item
+from numpy.lib.npyio import DataSource
 
 
 # --- define -------------------------------------------------------------------------------------
@@ -40,7 +41,7 @@ def read(filepath, *, encoding="utf-8"):
         Dictionary containing header information.
     """
     headers = collections.OrderedDict()
-    ds = np.DataSource(None)
+    ds = DataSource(None)
     # The following code is adapted from np.genfromtxt source
     try:
         if isinstance(filepath, os.PathLike):
